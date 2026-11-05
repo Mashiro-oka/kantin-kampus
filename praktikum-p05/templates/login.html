@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Login Admin Kantin{% endblock %} {% block content %}
+<h1 class="page-title">Login Admin Kantin</h1>
+
+<div class="form-card">
+  <form action="{{ url_for('login') }}" method="POST">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Masukkan username" required autofocus />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Masukkan password" required />
+    </div>
+    <button type="submit" class="btn" style="width: 100%">Masuk (Login)</button>
+  </form>
+</div>
+{% endblock %}

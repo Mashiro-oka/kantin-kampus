@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Masukan & Saran Kantin{% endblock %} {% block content %}
+<h1 class="page-title">Kirim Masukan & Saran</h1>
+
+<div class="form-card">
+  <form action="{{ url_for('kontak') }}" method="POST">
+    <div class="form-group">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" placeholder="Contoh: Faiz" required />
+    </div>
+    <div class="form-group">
+      <label for="pesan">Pesan atau Masukan Menu</label>
+      <textarea id="pesan" name="pesan" placeholder="Tuliskan masukan untuk kantin kampus..." required></textarea>
+    </div>
+    <button type="submit" class="btn">Kirim Masukan via POST</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ menu.nama if menu else 'Menu Tidak Ditemukan' }}{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('home') }}" class="back-link">&larr; Kembali ke Daftar Menu</a>
+
+{% if menu %}
+<div class="detail-box">
+  <span class="badge-kategori">{{ menu.kategori }}</span>
+  <h1>{{ menu.nama }}</h1>
+  <p class="lead">Harga: <strong>{{ menu.harga }}</strong></p>
+  <hr>
+  <p>{{ menu.deskripsi }}</p>
+  <p class="member-discount" style="margin-top: 1rem;">Diskon Member 15% untuk semua menu</p>
+</div>
+{% else %}
+<div class="empty-box">
+  <h2>Menu Tidak Ditemukan!</h2>
+  <p>Maaf, menu dengan ID #{{ id }} tidak tersedia di kantin.</p>
+</div>
+{% endif %}
+{% endblock %}

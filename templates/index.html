@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Beranda{% endblock %}
+
+{% block content %}
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Selamat Datang di Kantin Kampus!</h1>
+            <p>Pilihan makanan dan minuman lezat, bersih, dan ramah kantong mahasiswa. Daftarkan diri Anda sebagai member kantin untuk menikmati diskon eksklusif 15% di setiap transaksi!</p>
+        </div>
+        <div class="hero-action">
+            <a href="{{ url_for('register') }}" class="btn-hero">Daftar Member Sekarang &rarr;</a>
+        </div>
+    </section>
+
+    <!-- SECTION MENU -->
+    <section class="section-header">
+        <h2>Daftar Menu Favorit Hari Ini</h2>
+        <p>Menu pilihan mahasiswa dengan porsi pas dan rasa mantap</p>
+    </section>
+
+    <div class="menu-grid">
+        {% for menu in menu_list %}
+        <div class="menu-card">
+            <div class="card-top">
+                <span class="badge-kategori">{{ menu.kategori }}</span>
+                <h3>{{ menu.nama }}</h3>
+                <p>{{ menu.deskripsi }}</p>
+                <a href="{{ url_for('detail_menu', id=menu.id) }}" class="card-link">Lihat Detail Menu &rarr;</a>
+            </div>
+            <div class="card-bottom">
+                <div class="menu-price">{{ menu.harga }}</div>
+                <div class="member-discount">Diskon Member 15%</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

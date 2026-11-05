@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %}Daftar Menu Kantin{% endblock %} {% block content %}
+<h1 class="page-title">Daftar Menu Kantin Kampus</h1>
+
+<div class="card-grid">
+  {% for item in menu_list %}
+  <div class="card">
+    <span class="badge">{{ item.kategori }} • {{ item.harga }}</span>
+    <h3>{{ item.nama }}</h3>
+    <p>{{ item.deskripsi }}</p>
+    <a href="{{ url_for('detail_menu', id=item.id) }}" class="btn"> Lihat Detail Menu → </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

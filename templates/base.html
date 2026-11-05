@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Kantin Kampus{% endblock %} - Pemrograman Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="brand-logo">
+                <span class="brand-icon">■</span> Kantin Kampus
+                <span class="brand-badge">P-06</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Beranda</a></li>
+                <li><a href="{{ url_for('kontak') }}">Masukan</a></li>
+                <li><a href="{{ url_for('login') }}">Login Admin</a></li>
+                <li><a href="{{ url_for('register') }}" class="btn-nav">Daftar Member</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- FLASH NOTIFICATION CONTAINER (WADAH PESAN ERROR / SUKSES) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-wrapper">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              <span class="alert-icon">
+                {% if category == 'success' %}✓{% else %}⚠{% endif %}
+              </span>
+              <span class="alert-text">{{ message }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Kantin Kampus &bull; Modul Praktikum Pemrograman Web Pertemuan 06</p>
+    </footer>
+
+</body>
+</html>

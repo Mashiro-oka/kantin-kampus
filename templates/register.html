@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Daftar Member Kantin{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>Daftar Member Kantin</h2>
+      <p>Dapatkan diskon 15% di setiap transaksi.</p>
+    </div>
+    <form action="{{ url_for('register') }}" method="POST">
+      <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" name="nama" class="form-control" value="{{ request.form.get('nama', '') }}" placeholder="Contoh: Budi Santoso" />
+      </div>
+      <div class="form-group">
+        <label for="email">Alamat Email Kampus</label>
+        <input type="text" id="email" name="email" class="form-control" value="{{ request.form.get('email', '') }}" placeholder="budi@kampus.ac.id" />
+      </div>
+      <div class="form-group">
+        <label for="password">Kata Sandi</label>
+        <input type="password" id="password" name="password" class="form-control" />
+        <span class="form-help">Minimal 6 karakter.</span>
+      </div>
+      <div class="form-group">
+        <label for="confirm">Konfirmasi Sandi</label>
+        <input type="password" id="confirm" name="confirm" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Daftar Member Sekarang</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
